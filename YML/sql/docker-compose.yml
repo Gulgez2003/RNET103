@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  code-db:
+    container_name: code-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    mem_limit: 2g
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Pro247!!"
+    ports:
+      - "1434:1433"
+
+networks:
+  code-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+          gateway: 172.21.0.1
